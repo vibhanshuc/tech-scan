@@ -5,6 +5,9 @@ import Pagination from 'react-js-pagination/dist/Pagination';
 import NProgress from 'nprogress';
 import TextField from 'material-ui/TextField';
 import Languages from '../../components/Languages';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import MenuItem from 'material-ui/MenuItem';
+import DropDownMenu from 'material-ui/DropDownMenu';
 
 const PER_PAGE = 9;
 
@@ -63,29 +66,42 @@ class Repos extends Component {
 
     return (
       <div style={{display: 'flex'}}>
-        <div style={{flex: 0.7, marginRight: 10,}}>
-          {showItems.length ?
-            <div>
-              <TextField name="search"
-                         value={search}
-                         onChange={this.handleInputChange}
-                         onKeyDown={this.handleEnterKeyPress}/>
-              {count} repository results
-              {showItems.map(item => <Repo key={item.id} {...item}/>)}
-              <Pagination
-                hideDisabled={true}
-                activePage={this.state.activePage}
-                itemsCountPerPage={PER_PAGE}
-                totalItemsCount={this.state.total}
-                onChange={this.handlePageChange}
-              />
-            </div>
-            : <span>Loading....</span>
-          }
-        </div>
-        <div style={{flex: 0.3}}>
-          <Languages owner={'angular'} repo={'angular'}/>
-        </div>
+
+          <div style={{flex: 0.7, marginRight: 10,}}>
+            <Toolbar>
+              <ToolbarGroup firstChild={true}>
+                <TextField name="search"
+                           style={{marginLeft: 20}}
+                           value={search}
+                           onChange={this.handleInputChange}
+                           onKeyDown={this.handleEnterKeyPress}/>
+                <span style={{fontSize: 14}}>{count ? `${count} repository results`: ''}</span>
+              </ToolbarGroup>
+              <ToolbarGroup>
+                <DropDownMenu value={1} onChange={this.handleChange}>
+                  <MenuItem value={1} primaryText="Sort: Best Match" />
+                </DropDownMenu>
+              </ToolbarGroup>
+            </Toolbar>
+            <br/>
+            {showItems.length ?
+              <div>
+
+                {showItems.map(item => <Repo key={item.id} {...item}/>)}
+                <Pagination
+                  hideDisabled={true}
+                  activePage={this.state.activePage}
+                  itemsCountPerPage={PER_PAGE}
+                  totalItemsCount={this.state.total}
+                  onChange={this.handlePageChange}
+                />
+              </div>
+              : <span>Loading....</span>
+            }
+          </div>
+          <div style={{flex: 0.3}}>
+            <Languages owner={'angular'} repo={'angular'}/>
+          </div>
       </div>
     )
   }
