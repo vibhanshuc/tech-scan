@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.app-content {
+  padding: 70px;
+  flex-shrink: 0;
+  min-height: calc(100vh - 64px - 38px - 140px);
+}
+
+@media all and (max-width: 600px){
+  .app-content {
+    padding: 5px;
+  }
+}
+#nprogress .bar {
+  background: #DD0A70;
+  z-index: 1200;
+}
+
+#nprogress .spinner {
+  z-index: 1200;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #DD0A70, 0 0 5px #DD0A70;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #DD0A70;
+  border-left-color: #DD0A70;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+}
+
+.pagination li {
+  display: flex;
+  padding: 15px;
+  margin: 5px;
+  border: 1px solid #00BCD4;
+  font-size: 18px;
+  height: 25px;
+  align-items: center;
+  cursor: pointer;
+  background: #00BCD4;
+}
+
+.pagination li.active {
+  cursor: not-allowed;
+}
+
+.pagination li.active a {
+  color: black;
+  cursor: not-allowed;
+}
