@@ -23,7 +23,7 @@ class Repos extends Component {
       showItems: [],
       total: 0,
       activePage: 1,
-      sort: 1,
+      sort: 0,
     }
   }
 
@@ -64,9 +64,10 @@ class Repos extends Component {
     }
   };
 
-  handleSortChange = async (event, value) => {
-    this.setState({sort: value + 1});
-    await this.fetchTopicData();
+  handleSortChange = (event, value) => {
+    this.setState({sort: value}, async () => {
+      await this.fetchTopicData();
+    });
   };
 
   render() {
@@ -74,7 +75,6 @@ class Repos extends Component {
 
     return (
       <div style={{display: 'flex'}}>
-
           <div style={{flex: 0.7, marginRight: 10,}}>
             <Toolbar>
               <ToolbarGroup firstChild={true}>
@@ -87,10 +87,10 @@ class Repos extends Component {
               </ToolbarGroup>
               <ToolbarGroup>
                 <DropDownMenu value={this.state.sort} onChange={this.handleSortChange}>
-                  <MenuItem value={1} primaryText="Sort: Best Match" />
-                  <MenuItem value={2} primaryText="Sort: Stars" />
-                  <MenuItem value={3} primaryText="Sort: Forks" />
-                  <MenuItem value={4} primaryText="Sort: Updated" />
+                  <MenuItem value={0} primaryText="Sort: Best Match" />
+                  <MenuItem value={1} primaryText="Sort: Stars" />
+                  <MenuItem value={2} primaryText="Sort: Forks" />
+                  <MenuItem value={3} primaryText="Sort: Updated" />
                 </DropDownMenu>
               </ToolbarGroup>
             </Toolbar>
