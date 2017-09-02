@@ -11,6 +11,8 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 
 const PER_PAGE = 9;
 
+const sorts = [undefined, 'stars', 'forks', 'updated'];
+
 class Repos extends Component {
   constructor(props) {
     super(props);
@@ -20,13 +22,14 @@ class Repos extends Component {
       items: [],
       showItems: [],
       total: 0,
-      activePage: 1
+      activePage: 1,
+      sort: 1,
     }
   }
 
   fetchTopicData = async () => {
     NProgress.start();
-    const topic = await getTopic(this.state.search);
+    const topic = await getTopic(this.state.search, sorts[this.state.sort]);
     this.setState({
       count: topic.total_count,
       items: topic.items,
@@ -50,7 +53,7 @@ class Repos extends Component {
     });
   };
 
-  handleInputChange = (event) => {
+  handleInputChange = (event,) => {
     this.setState({search: event.target.value});
   };
 
@@ -59,6 +62,11 @@ class Repos extends Component {
       event.preventDefault();
       await this.fetchTopicData();
     }
+  };
+
+  handleSortChange = async (event, value) => {
+    this.setState({sort: value + 1});
+    await this.fetchTopicData();
   };
 
   render() {
@@ -78,8 +86,11 @@ class Repos extends Component {
                 <span style={{fontSize: 14}}>{count ? `${count} repository results`: ''}</span>
               </ToolbarGroup>
               <ToolbarGroup>
-                <DropDownMenu value={1} onChange={this.handleChange}>
+                <DropDownMenu value={this.state.sort} onChange={this.handleSortChange}>
                   <MenuItem value={1} primaryText="Sort: Best Match" />
+                  <MenuItem value={2} primaryText="Sort: Stars" />
+                  <MenuItem value={3} primaryText="Sort: Forks" />
+                  <MenuItem value={4} primaryText="Sort: Updated" />
                 </DropDownMenu>
               </ToolbarGroup>
             </Toolbar>

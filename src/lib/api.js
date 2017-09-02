@@ -8,8 +8,8 @@ export const getLanguages = async (owner, repo) => {
 };
 
 
-export const getTopic = async (topic) => {
-  const res = await instance.get('search/repositories', {params: {q: topic}});
+export const getTopic = async (topic, sort) => {
+  const res = await instance.get('search/repositories', {params: {q: topic, sort}});
   return res.data;
 };
 
