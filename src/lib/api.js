@@ -7,18 +7,15 @@ export const getLanguages = async (owner, repo) => {
   return res.data;
 };
 
-
 export const getTopic = async (topic, sort) => {
   const res = await instance.get('search/repositories', {params: {q: topic, sort}});
   return res.data;
 };
 
-
 export const getUser = async (name) => {
   const res = await instance.get(`users/${name}`);
   return res.data;
 };
-
 
 export const getReposOfUser = async (name) => {
   const res = await instance.get(`users/${name}/repos`);
@@ -39,5 +36,3 @@ export const getStarred = async (name) => {
   const res = await instance.get(`users/${name}/starred`);
   return res.data;
 };
-
-

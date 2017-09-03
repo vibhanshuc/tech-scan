@@ -9,17 +9,6 @@ a {
   text-decoration: none;
 }
 
-.app-content {
-  padding: 70px;
-  flex-shrink: 0;
-  min-height: calc(100vh - 64px - 38px - 140px);
-}
-
-@media all and (max-width: 600px){
-  .app-content {
-    padding: 5px;
-  }
-}
 #nprogress .bar {
   background: #DD0A70;
   z-index: 1200;

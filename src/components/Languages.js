@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import {List} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import LanguageItem from './LanguageItem';
 import {getLanguages} from '../lib/api';
+import {ListItem} from 'material-ui/List';
+import injectSheet from 'react-jss'
+import {Flex} from 'reflexbox'
+
+const style = {
+  container: {
+    border: '1px solid rgb(237, 237, 237)',
+  },
+};
 
 class Languages extends Component {
   state = {
@@ -20,14 +28,21 @@ class Languages extends Component {
 
   render() {
     const {languages} = this.state;
+    const {classes} = this.props;
     return (
-      languages.length ?
-        (<List style={{border: '1px solid rgb(237, 237, 237)', flex: 1}}>
+      <List className={classes.container}>
         <Subheader>Languages</Subheader>
-        {languages.map((lang) => <LanguageItem key={lang[0]} name={lang[0]} count={lang[1]}/>)}
-      </List>): <span>Loading...</span>
+        {languages.map((lang) =>
+          <ListItem key={lang[0]} primaryText={
+            <Flex justify={'space-between'}>
+              <span>{lang[0]}</span>
+              <span>{lang[1]}</span>
+            </Flex>
+          }
+          />)}
+      </List>
     )
   }
 }
 
-export default Languages;
+export default injectSheet(style)(Languages);

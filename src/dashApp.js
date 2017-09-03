@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TopNav from './components/Topnav';
+import Topnav from './components/Topnav';
+import Footer from './components/Footer';
+import Main from './components/Main';
 import AppRouter from './routes';
 import {BrowserRouter as Router} from 'react-router-dom';
 
@@ -10,19 +12,11 @@ export class dashApp extends Component {
       <MuiThemeProvider>
         <Router>
           <div>
-            <TopNav/>
-            <div className="app-content">
+            <Topnav/>
+            <Main>
               <AppRouter/>
-            </div>
-            <footer
-              style={{
-                background: '#ffffff',
-                textAlign: 'center',
-                paddingTop: '10px',
-                paddingBottom: '10px',
-              }}>
-              Cast Software Systems ©2017
-            </footer>
+            </Main>
+            <Footer/>
           </div>
         </Router>
       </MuiThemeProvider>

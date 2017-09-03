@@ -11,8 +11,10 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-js-pagination": "^2.2.0",
+    "react-jss": "^7.1.0",
     "react-router-dom": "next",
-    "react-scripts": "1.0.12"
+    "react-scripts": "1.0.12",
+    "reflexbox": "^3.0.0-0"
   },
   "scripts": {
     "start": "react-scripts start",
