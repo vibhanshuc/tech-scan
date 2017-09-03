@@ -1,9 +1,14 @@
 language: node_js
 node_js:
-  - 6
-  - 8
+- 8
 cache:
   directories:
   - node_modules
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  app: tech-scan
+  api_key:
+    secure: KVGcmj3ZLXAp+4H6+OPRtMfuTPcEX2wq5/XmAwCpyklgFM7s8DMQF0tn6Gt7irtSJulGY3lWSTLJjuVo36KmScr+Zlz1QYgR/SqJ81OFs9VCfl3OGMC/NOIQU9lU/5UiGJnKBR0sgG6ZWHmU8uNmAq/0ZevRRA1sH8iZltbb+WnlsqyRI9gJxeWrmqHJj/o4c4T8zsZAyZrXiORSZjBOoRMpexQjrTDZQwi9eGgMhwkI7bLDVj/mnfBJjDueQE/pqzY24XTFmw5CuZtzTNGYFZaTGNkAAcLa4DZpNKOOZrsdXMVkM4t7z6Xg/X6rQzeyKkaJk83WDdBMnYmT9/PKvAa58VHbUQBNM1ziKFJUj3Yjg7UUu5EukfSk5ZRCCeLQw648lBBtOm/o0zy2KMTjz5jMNSNyJy6qiko5r5oPC3dRxPIlLnDJrFZ8k36yEW7FsLuWVg2WwUMx27+EkMfpxU4sYTJfSoIpeaCOEPAgIQtF9512byi2Pw/A/XbTiXGIh0NoK3uIPkIblbWWSVDwhnvRfvVoliiFzP0DV8TQRpl/0McK9Nlfo3LfPoCbmHAvgmbHxLAnP4KCx0CAIJtbJMg5BesaWXfWmI4hHYSnCugCa0qtQwUWHfbfeHWH6iELb7FKifLZ1OZ6vP/bQa/yPNJv8EYnTPvFa7TnqFWy8U8=
+  on: master
