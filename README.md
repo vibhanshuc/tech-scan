@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vibhanshuc/tech-scan.svg?branch=master)](https://travis-ci.org/vibhanshuc/tech-scan)
+
 ### TechScan
 
 #### Pre-requisite
