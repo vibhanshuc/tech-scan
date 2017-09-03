@@ -5,7 +5,7 @@ body {
 }
 
 a {
-  color: #DD0A70;
+  color: white;
   text-decoration: none;
 }
 
@@ -51,6 +51,6 @@ a {
 }
 
 .pagination li.active a {
-  color: black;
+  color: gray;
   cursor: not-allowed;
 }

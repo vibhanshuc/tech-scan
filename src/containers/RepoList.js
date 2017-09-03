@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
-import {getTopic} from '../lib/api';
-import Repo from '../components/Repo';
-import Pagination from 'react-js-pagination/dist/Pagination';
-import NProgress from 'nprogress';
-import TextField from 'material-ui/TextField';
-import Languages from '../components/Languages';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
-import {Flex, Box} from 'reflexbox'
-import injectSheet from 'react-jss'
+import Pagination from 'react-js-pagination/dist/Pagination';
+import NProgress from 'nprogress';
+import injectSheet from 'react-jss';
+import TextField from 'material-ui/TextField';
+import {getTopic} from '../lib/api';
+import Repo from '../components/Repo';
+import Languages from '../components/Languages';
 import TwoColumnWrapper from '../components/TwoColumnWrapper';
 
 const styles = {
