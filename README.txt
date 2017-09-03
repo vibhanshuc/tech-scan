@@ -11,3 +11,5 @@
 4. Server will start running on port 3000 (make sure PORT 3000 is empty)
 5. Open `http://localhost:3000` in browser if it not opens automatically.
 
+#### Run Test
+Run `npm run test`
