@@ -10,6 +10,9 @@ import {getTopic} from '../lib/api';
 import Repo from '../components/Repo';
 import Languages from '../components/Languages';
 import TwoColumnWrapper from '../components/TwoColumnWrapper';
+import createHistory from 'history/createBrowserHistory';
+
+const history = createHistory();
 
 const styles = {
   text: {
@@ -72,6 +75,7 @@ class RepoList extends Component {
   handleEnterKeyPress = async (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
+      history.push(`/repos/${this.state.search}`);
       await this.fetchTopicData();
     }
   };
