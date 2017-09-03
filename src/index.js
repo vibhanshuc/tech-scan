@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'nprogress/nprogress.css';
 import './index.css';
-import DashApp from './dashApp';
+import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const mountNode = document.getElementById('root');
 
-ReactDOM.render(<DashApp />, mountNode);
+ReactDOM.render(<App />, mountNode);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./dashApp.js', () => {
-    const NextApp = require('./dashApp').default;
+  module.hot.accept('./App.js', () => {
+    const NextApp = require('./App').default;
     ReactDOM.render(<NextApp />,  mountNode);
   });
 }

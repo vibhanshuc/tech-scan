@@ -6,7 +6,7 @@ import Main from './components/Main';
 import AppRouter from './routes';
 import {BrowserRouter as Router} from 'react-router-dom';
 
-export class dashApp extends Component {
+export class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
@@ -24,4 +24,4 @@ export class dashApp extends Component {
   }
 }
 
-export default dashApp;
+export default App;
