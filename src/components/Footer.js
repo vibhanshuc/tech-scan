@@ -3,15 +3,18 @@ import injectSheet from 'react-jss'
 
 const styles = {
   footer: {
-    background: '#ffffff',
+    background: '#bbbbbb',
     textAlign: 'center',
     paddingTop: '10px',
     paddingBottom: '10px',
   },
 };
 
-export default injectSheet(styles)(({classes}) => (
+const footer = ({classes}) => (
   <footer className={classes.footer}>
     Cast Software Systems ©2017
   </footer>
-));
+);
+
+export default injectSheet(styles)(footer);
+

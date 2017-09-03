@@ -10,6 +10,7 @@ import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import {Flex, Box} from 'reflexbox'
 import injectSheet from 'react-jss'
+import TwoColumnWrapper from '../components/TwoColumnWrapper';
 
 const styles = {
   text: {
@@ -25,7 +26,7 @@ const sorts = [undefined,
   'forks',
   'updated'];
 
-class Repos extends Component {
+class RepoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -128,18 +129,14 @@ class Repos extends Component {
     const {classes} = this.props;
 
     return (
-      <Flex>
-        <Box w={2 / 3} pr={20}>
-          {this.renderToolbar(classes)}
-          <br/>
-          {showItems.length ? this.renderItems() : <span>Loading....</span>}
-        </Box>
-        <Box w={1 / 3}>
-          <Languages owner={'angular'} repo={'angular'}/>
-        </Box>
-      </Flex>
+      <TwoColumnWrapper content1={<div>
+        {this.renderToolbar(classes)}
+        <br/>
+        {showItems.length ? this.renderItems() : <span>Loading....</span>}
+      </div>}
+      content2={<Languages owner={'angular'} repo={'angular'}/>}/>
     )
   }
 }
 
-export default injectSheet(styles)(Repos);
+export default injectSheet(styles)(RepoList);

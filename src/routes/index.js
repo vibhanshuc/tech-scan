@@ -1,8 +1,8 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Technologies from '../containers/Technologies';
-import Repos from '../containers/Repos';
-import User from '../containers/User';
+import RepoList from '../containers/RepoList';
+import UserProfile from '../containers/UserProfile';
 
 class Routes extends React.Component {
   render() {
@@ -16,12 +16,12 @@ class Routes extends React.Component {
         <Route
           exact
           path={'/repos/:topic'}
-          component={({match}) => <Repos search={match.params.topic}/>}
+          component={({match}) => <RepoList search={match.params.topic}/>}
         />
         <Route
           exact
           path={'/users/:name'}
-          component={({match}) => <User name={match.params.name}/>}
+          component={({match}) => <UserProfile name={match.params.name}/>}
         />
       </Switch>
     );

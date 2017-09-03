@@ -1,36 +1,12 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {getUser, getReposOfUser, getStarred, getFollowers, getFollowing} from '../lib/api';
 import Repo from '../components/Repo';
+import User from '../components/User';
 import NProgress from 'nprogress';
-import Avatar from 'material-ui/Avatar';
-import RaisedButton from 'material-ui/RaisedButton';
-import {pink500} from 'material-ui/styles/colors'
 import {Tabs, Tab} from 'material-ui/Tabs';
-import {Flex, Box} from 'reflexbox'
-import injectSheet from 'react-jss'
+import {Flex, Box} from 'reflexbox';
 
-const styles = {
-  fullName: {color: pink500, padding: 10,},
-  blog: {
-    color: pink500
-  }
-};
-
-const User = injectSheet(styles)(({classes, login, name, bio, avatar_url, blog}) => {
-  return (
-    <Flex column={true} align={'center'}>
-      <Avatar size={128} src={avatar_url}/>
-      <Link className={classes.fullName} to={`/users/${login}`}>{name || login}</Link>
-      <p>{bio}</p>
-      <a className={classes.blog} href={blog}>{blog}</a>
-      <br/>
-      <br/>
-    </Flex>
-  )
-});
-
-class Users extends Component {
+class UserProfile extends Component {
 
   state = {
     user: undefined,
@@ -107,7 +83,7 @@ class Users extends Component {
 
   renderLayout = (users) => {
     return (
-      <Flex wrap={'wrap'} justify={'center'}>
+      <Flex wrap justify={'center'}>
         {users.map(item =>
           <Box p={5}>
             <User key={item.id} avatar_url={item.avatar_url} login={item.login}/>
@@ -118,7 +94,11 @@ class Users extends Component {
   };
 
   renderRepos = (repos) => {
-    const renderedRepos = repos.map((item, i) => <Box w={1/2} pl={ i % 2 === 0 ? 0: 5} pr={ i % 2 === 0 ? 5: 0}><Repo key={item.id} {...item} isColumn={true}/></Box>);
+    // set repos in grid of two columns
+    const renderedRepos = repos.map((item, i) =>
+      <Box w={1/2} pl={ i % 2 === 0 ? 0: 5} pr={ i % 2 === 0 ? 5: 0}>
+        <Repo key={item.id} {...item} isColumn={true}/>
+      </Box>);
 
     const resultsRender = [];
 
@@ -136,7 +116,6 @@ class Users extends Component {
       <Flex>
         <Box w={1/4}>
           <User {...user}/>
-          <RaisedButton label="Follow" fullWidth={true} href={user.html_url} target="_blank"/>
         </Box>
         <Box w={3/4} ml={20}>
           <Tabs
@@ -161,4 +140,4 @@ class Users extends Component {
   }
 }
 
-export default Users;
+export default UserProfile;
